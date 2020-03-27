@@ -49,5 +49,15 @@ namespace GradeBook.GradeBooks
                 average += student.AverageGrade;
             return average / Students.Count;
         }
+
+        public override void CalculateStatistics()
+        {
+            if (this.Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
+            }
+
+            base.CalculateStatistics();
+        }
     }
 }
