@@ -19,13 +19,15 @@ namespace GradeBook.GradeBooks
                 throw new InvalidOperationException();
             }
 
-            this.Students.Sort();
-            int index = this.Students.FindLastIndex(
+            
+            List<Student> LocalStudents = new List<Student>(Students);
+            LocalStudents.Sort();
+            int index = LocalStudents.FindLastIndex(
                 delegate(Student student)
                 {
                     return student.AverageGrade > averageGrade;
                 });
-            int percent = (int) Math.Round( (decimal) (100 * (index + 2) / Students.Count));
+            int percent = (int) Math.Round( (decimal) (100 * (index + 2) / LocalStudents.Count));
 
             switch (percent)
             {
